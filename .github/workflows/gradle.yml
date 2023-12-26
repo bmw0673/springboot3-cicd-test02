@@ -31,7 +31,11 @@ jobs:
     # gradelw 실행권한 부여
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    # Build with Gradle
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2 # v2.6.0
       with:
         arguments: build
+    # AWS 인증(IAM 사용자 Access Key, Secret Key, aws region)
+    # 빌드결과물을 S3 버킷에 업로드 (codedeploy 어플리케이션 이름, 버킷 이름)
+    # S3 버킷에 있는 파일을 대상으로 EC2에 배포(codedeploy 어플리케이션 그룹 이름, codedeploy 어플리케이션 이름, 버킷 이름)
